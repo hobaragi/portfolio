@@ -36,7 +36,7 @@ def save_status(event):
     for i in range(len(list_week)):
         file.write("{}\n" .format(chkvar_week[i].get()))
     file.close()
-    print ('save complete!')
+    lb3.config(text="저장 완료")
 
 def file_open (event):
     os.system("start {}".format(t_path))
@@ -85,7 +85,7 @@ lb2 = Label(root)        #root라는 창에 레이블 생성
 lb2.pack()               #레이블 배치
 
 btn = Button(root)      #root라는 창에 버튼 생성
-btn.config(text="선택") #버튼 내용
+btn.config(text="확인") #버튼 내용
 btn.config(width=5)    #버튼 크기
 btn.config(command=btnpress)    #버튼 기능(btnpree() 함수 호출)
 btn.pack()              #버튼 배치
@@ -102,7 +102,10 @@ for i in range(len(list_week)):
     else:
         chkvar_week[i].set(0)
 
-save_btn = tkinter.Label (root, text="save", bg='grey19', fg = 'snow')
+lb3 = Label(root)
+lb3.pack()
+
+save_btn = tkinter.Label (root, text="저장", bg='grey19', fg = 'snow')
 save_btn.bind('<Button-1>', save_status)
 save_btn.bind('<Button-3>', file_open)
 save_btn.pack()
