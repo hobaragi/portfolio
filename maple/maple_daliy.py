@@ -1,16 +1,8 @@
 from tkinter import *       #tkinter 라이브러리에 모든 함수를 사용하겠다.
+from tkinter import simpledialog
 import tkinter.ttk
 import tkinter.font
 import os
-
-root = Tk()                 #root 라는 창을 생성
-root.iconbitmap("C:/Users/김균호/Desktop/portfolio/maple/maple.ico")
-root.geometry("300x600")    #창 크기설정
-root.title("Maple To Do List") #창 제목설정
-root.option_add("*Font", "맑은고딕 16") #폰트설정
-root.resizable(False, False) #x,y 창 크기 변경 불가
-
-t_path = "C:/Users/김균호/Desktop/portfolio/maple/status.txt"
 
 def btnpress():
     all_day = all(chkvar_day[i].get() == 1 for i in range(len(list_day)))
@@ -39,8 +31,49 @@ def save_status(event):
     lb3.config(text="저장 완료")
 
 def file_open (event):
-    os.system("start {}".format(t_path))
+    os.system("notepad {}".format(t_path))
 
+def choose_computer():
+    global num
+    num = 1
+    dialog_window.destroy()
+
+def choose_laptop():
+    global num
+    num = 2
+    dialog_window.destroy()
+
+# 초기값 설정
+num = None
+
+# 대화 상자 생성
+dialog_window = Tk()
+dialog_window.withdraw()  # 창을 숨김
+
+# 사용자로부터 값을 입력 받기
+dialog_window.title("현재 이용중인 기기")
+dialog_window.geometry("250x100")
+Label(dialog_window, text="컴퓨터 또는 노트북을 선택하세요").pack(pady=10)
+Button(dialog_window, text="컴퓨터", command=choose_computer).pack(side=LEFT, padx=30)
+Button(dialog_window, text="노트북", command=choose_laptop).pack(side=RIGHT, padx=30)
+
+# 대화 상자 실행
+dialog_window.deiconify()
+dialog_window.mainloop()
+
+if num == 1:
+    maple_ico = "C:/Users/김균호/Desktop/portfolio/maple/maple.ico"
+    t_path = "C:/Users/김균호/Desktop/portfolio/maple/status.txt"
+elif num == 2:
+    maple_ico = "C:/Users/hobaragi/Desktop/portfolio/maple/maple.ico"
+    t_path = "C:/Users/hobaragi/Desktop/portfolio/maple/status.txt"
+
+root = Tk()                 #root 라는 창을 생성
+root.iconbitmap(maple_ico)
+root.geometry("300x600")    #창 크기설정
+root.title("Maple To Do List") #창 제목설정
+root.option_add("*Font", "맑은고딕 16") #폰트설정
+root.resizable(False, False) #x,y 창 크기 변경 불가
 
 list_day = ["심볼", "몬파", "메M", "황금마차", "할로윈_출석", "우루스", "데일리기프트"]
 list_week = ["심볼", "주간보스", "수로&플래그"]
@@ -105,7 +138,7 @@ for i in range(len(list_week)):
 lb3 = Label(root)
 lb3.pack()
 
-save_btn = tkinter.Label (root, text="저장", bg='grey19', fg = 'snow')
+save_btn = tkinter.Label(root, text="저장", bg='grey19', fg = 'snow')
 save_btn.bind('<Button-1>', save_status)
 save_btn.bind('<Button-3>', file_open)
 save_btn.pack()
