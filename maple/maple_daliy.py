@@ -62,8 +62,8 @@ dialog_window.deiconify()
 dialog_window.mainloop()
 
 if num == 1:
-    maple_ico = "C:/Users/김균호/Desktop/portfolio/maple/maple.ico"
-    t_path = "C:/Users/김균호/Desktop/portfolio/maple/status.txt"
+    maple_ico = "C:/Users/rlarb/Desktop/portfolio/maple/maple.ico"
+    t_path = "C:/Users/rlarb/Desktop/portfolio/maple/status.txt"
 elif num == 2:
     maple_ico = "C:/Users/hobaragi/Desktop/portfolio/maple/maple.ico"
     t_path = "C:/Users/hobaragi/Desktop/portfolio/maple/status.txt"
