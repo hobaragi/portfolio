@@ -46,7 +46,7 @@ def choose_laptop():
 # 초기값 설정
 num = None
 
-# 대화 상자 생성
+""" # 대화 상자 생성
 dialog_window = Tk()
 dialog_window.withdraw()  # 창을 숨김
 
@@ -59,14 +59,10 @@ Button(dialog_window, text="노트북", command=choose_laptop).pack(side=RIGHT, 
 
 # 대화 상자 실행
 dialog_window.deiconify()
-dialog_window.mainloop()
+dialog_window.mainloop() """
 
-if num == 1:
-    maple_ico = "C:/Users/rlarb/Desktop/portfolio/maple/maple.ico"
-    t_path = "C:/Users/rlarb/Desktop/portfolio/maple/status.txt"
-elif num == 2:
-    maple_ico = "C:/Users/hobaragi/Desktop/portfolio/maple/maple.ico"
-    t_path = "C:/Users/hobaragi/Desktop/portfolio/maple/status.txt"
+maple_ico = "C:/Users/rlarb/Desktop/portfolio/maple/maple.ico"
+t_path = "C:/Users/rlarb/Desktop/portfolio/maple/status.txt"
 
 root = Tk()                 #root 라는 창을 생성
 root.iconbitmap(maple_ico)
